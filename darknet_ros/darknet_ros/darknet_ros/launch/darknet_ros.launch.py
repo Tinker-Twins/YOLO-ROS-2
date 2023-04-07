@@ -1,14 +1,21 @@
 import os
-
 from ament_index_python.packages import get_package_share_directory
-
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, SetEnvironmentVariable
-from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+from launch.actions import ExecuteProcess
+from launch.actions import DeclareLaunchArgument
 
 def generate_launch_description():
+
+  # Camera
+
+  camera_node_cmd = ExecuteProcess(
+                    cmd=[['ros2 launch v4l2_camera camera.launch.py']],
+                    shell=True,
+                    )
+
+  # Darknet YOLO
   darknet_ros_share_dir = get_package_share_directory('darknet_ros')
 
   image = LaunchConfiguration('image', default = 'image_raw')
@@ -52,12 +59,12 @@ def generate_launch_description():
 
   ld = LaunchDescription()
 
+  ld.add_action(camera_node_cmd)
   ld.add_action(declare_image_cmd)
   ld.add_action(declare_yolo_weights_path_cmd)
   ld.add_action(declare_yolo_config_path_cmd)
   ld.add_action(declare_ros_param_file_cmd)
   ld.add_action(declare_network_param_file_cmd)
-  
   ld.add_action(darknet_ros_cmd)
 
   return ld
