@@ -32,10 +32,30 @@ $ ros2 launch darknet_ros darknet_ros.launch.py
 
 ## Configure:
 - Installation configuration can be managed from `CMakeLists.txt`.
-    - `darknet_ros/`
-    ```
-    ```
+    - `darknet_ros/darknet_ros/darknet/CMakeLists.txt`
+        ```cmake
+        # CUDA/cuDNN Settings
+        option(ENABLE_CUDA "Enable CUDA support" OFF)
+        option(ENABLE_CUDNN "Enable CUDNN" OFF)
+        option(ENABLE_CUDNN_HALF "Enable CUDNN Half precision" OFF)
+        ```
+    - `darknet_ros/darknet_ros/darknet_ros/CMakeLists.txt`
+        ```cmake
+        # CUDA/cuDNN Settings
+        set(CUDA_ENABLE OFF)
+        set(CUDNN_ENABLE OFF)
+        set(FP16_ENABLE OFF)
+        
+        # YOLO Pre-Trained Model (Weights) Settings
+        set(DOWNLOAD_YOLOV2_TINY OFF)
+        set(DOWNLOAD_YOLOV3 OFF)
+        set(DOWNLOAD_YOLOV4 OFF)
+        set(DOWNLOAD_YOLOV4_CSP ON)
+        set(DOWNLOAD_YOLOV4_TINY ON)
+        set(DOWNLOAD_YOLOV4_MISH OFF)
+        set(DOWNLOAD_YOLOV7_TINY ON)
+        ```
 - Names and other parameters of the publishers, subscribers and actions can be modified from `darknet_ros/config/ros.yaml`.
 - Parameters related to YOLO object detection algorithm can be modified from `darknet_ros/darknet_ros/darknet_ros/config/yolo.yaml`.
 - It is recommended to create a copy of the existing configuration file(s) as a template and do necessary modifications.
-- Reference the updated configuration file(s) in `darknet_ros/darknet_ros/darknet_ros/launch/darknet_ros.launch`.
+- Reference the updated configuration file(s) in `darknet_ros/darknet_ros/darknet_ros/launch/darknet_ros.launch.py`.
