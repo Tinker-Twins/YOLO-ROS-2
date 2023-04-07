@@ -1,2 +1,2 @@
-# YOLO-ROS-2
+# YOLO ROS 2
 Darknet YOLO with ROS 2
