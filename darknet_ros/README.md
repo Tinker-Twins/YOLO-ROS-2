@@ -1,36 +1,11 @@
-# darknet-ros-fp16
+# darknet-ros
 
-darknet_ros + ROS2 Humble + OpenCV4 + CUDA 11 + __CUDNN (FP16)__ :fire::fire::fire:
-
-- [English (GitHub Wiki)](https://github.com/Ar-Ray-code/darknet_ros_fp16/wiki/Darknet_ros_FP16-Report-(1.3x-faster)-%F0%9F%94%A5)
-- [Japanese (zenn)](https://zenn.dev/array/articles/4c82fc8382e62d)
-
-<br>
-
-## Update
-
-- May 1st 2022 Update
-  - Support Ampere arch (including Jetson Orin)
-- July 23th 2022 Update
-  - Support YOLOv7-tiny
-
-<br>
-
-## Main changes
-
-- __Support for YOLO v7__ : Switched the submodule to the master branch of [AlexeyAB/darknet.](https://github.com/AlexeyAB/darknet)
-- __Removed IPL__ : Switched from IPL to CV::Mat for OpenCV4 support.
-- __Support cuDNN + FP16__
-
-<!-- ## Try on Docker :whale:
-
-[DockerHub](https://hub.docker.com/r/ray255ar/darknet-ros-fp16) -->
-
-<br>
+## Details
+[Wiki](https://github.com/Ar-Ray-code/darknet_ros_fp16/wiki/Darknet_ros_FP16-Report-(1.3x-faster)-%F0%9F%94%A5)
 
 ## Requirements
 
-- ROS2 (tested on Humble)
+- ROS2 (tested on Foxy, Humble)
 - CUDA10 or later
   - If not, it will automatically turn off
 - OpenCV
@@ -41,10 +16,7 @@ darknet_ros + ROS2 Humble + OpenCV4 + CUDA 11 + __CUDNN (FP16)__ :fire::fire::fi
 - xhost (To install xhost , run `$ sudo apt install xorg` .)
 - cuDNN (Ubuntu 20.04)
 
-<br>
-
-
-## Installation 🐢
+## Installation
 
 ### Installation
 
@@ -69,7 +41,7 @@ $ colcon build --symlink-install
 git clone https://github.com/Ar-Ray-code/darknet_ros_fp16.git
 docker build -t darknet_ros_fp16 ./darknet_ros_fp16/.
 
-# connect webcamera
+# connect camera
 docker run --rm -it --device /dev/video0:/dev/video0:mwr -e DISPLAY=$DISPLAY --gpus all -v /tmp/.X11-unix:/tmp/.X11-unix darknet_ros_fp16 /bin/bash
 ```
 
@@ -109,8 +81,6 @@ set(DOWNLOAD_YOLOV4_MISH OFF)　# default : off
 set(DOWNLOAD_YOLOV7_TINY ON)　 # default : on
 ```
 
-
-
 ### Demo
 
 Connect your webcam to your PC.
@@ -122,7 +92,6 @@ $ ros2 launch darknet_ros demo-v4-tiny.launch.py
 ```
 
 ![example](https://user-images.githubusercontent.com/67567093/117596596-a2c8db00-b17e-11eb-90f9-146212e64567.png)
-
 
 
 ## Performance
@@ -171,6 +140,8 @@ source install/setup.bash
 ros2 launch darknet_ros yolov7.launch.py
 ```
 
-
-## Acknowledgment
- I am not a good programmer, but I was able to implement it with the help of many repositories. Thank you to [AlexeyAB](https://github.com/AlexeyAB)'s [darknet](https://github.com/AlexeyAB/darknet) , [legged robotics](https://github.com/leggedrobotics)'s [darknet_ros](https://github.com/leggedrobotics/darknet_ros), and [Tossy0423](https://github.com/Tossy0423/)'s [darknet_ros](https://github.com/Tossy0423/yolov4-for-darknet_ros/) !
+## Acknowledgments
+- [darknet_ros_fp16](https://github.com/Ar-Ray-code/darknet_ros_fp16)
+- [darknet](https://github.com/AlexeyAB/darknet)
+- [darknet_ros](https://github.com/leggedrobotics/darknet_ros)
+- [darknet_ros](https://github.com/Tossy0423/yolov4-for-darknet_ros/)
