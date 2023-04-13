@@ -8,6 +8,7 @@ darknet_ros:
         name: yolov3.weights
       threshold:
         value: 0.3
+      window_name: YOLO V3
       detection_classes:
         names:
           - person

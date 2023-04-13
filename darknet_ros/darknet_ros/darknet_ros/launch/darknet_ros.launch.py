@@ -9,7 +9,6 @@ from launch.actions import DeclareLaunchArgument
 def generate_launch_description():
 
   # Camera
-
   camera_node_cmd = ExecuteProcess(
                     cmd=[['ros2 launch v4l2_camera camera.launch.py']],
                     shell=True,
@@ -39,7 +38,7 @@ def generate_launch_description():
   declare_ros_param_file_cmd = DeclareLaunchArgument(
     'ros_param_file',
     default_value = darknet_ros_share_dir + '/config/ros.yaml',
-    description = 'Path to file with ROS related config')  
+    description = 'Path to file with ROS related config')
   declare_network_param_file_cmd = DeclareLaunchArgument(
     'network_param_file',
     default_value = darknet_ros_share_dir + '/config/yolov4-tiny.yaml',
