@@ -1,5 +1,11 @@
 # Darknet YOLO with ROS 2
 
+| ![Stop Sign Detection Simulation](https://github.com/Tinker-Twins/Autonomy-Science-And-Systems/blob/main/Capstone%20Project/media/stop_sign_detection_sim.gif) | ![Stop Sign Detection Robot](https://github.com/Tinker-Twins/Autonomy-Science-And-Systems/blob/main/Capstone%20Project/media/stop_sign_detection_real_robot.gif) | ![Stop Sign Detection RViz](https://github.com/Tinker-Twins/Autonomy-Science-And-Systems/blob/main/Capstone%20Project/media/stop_sign_detection_real_rviz.gif) |
+|:---------------------------------:|:------------------------------------:|:------------------------------------:|
+| Stop Sign Detection - Simulation | Stop Sign Detection - TurtleBot3 | Stop Sign Detection - Remote PC |
+
+**Note:** The above demonstrations use [this repository](https://github.com/Tinker-Twins/Autonomy-Science-And-Systems) for controlling TurtleBot3 to obey the stop sign.
+
 ## Build:
 1. Make a directory `ROS2_WS` to act as your ROS 2 workspace.
     ```bash
